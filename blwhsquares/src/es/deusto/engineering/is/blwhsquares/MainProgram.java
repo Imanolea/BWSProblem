@@ -16,9 +16,10 @@ public class MainProgram {
 		//instantiate environment reader
 		System.out.println(theProblem.gatherInitialPercepts());
 		
-		//check final state
 		
-// This was the test according to the 1/4 homework		
+// This was the test according to the 1/4 homework
+
+		//check final state		
 		
 //		if (theProblem.isFinalState(theProblem.getInitialStates().get(0)))
 //			System.out.println("The initial state is the final state");
@@ -32,15 +33,22 @@ public class MainProgram {
 //		else
 //			System.out.println("A final state is not a final state");
 		
-		//check create operators, isApplicable and effect
+		// set the current position to 0
 		
 		environment.setCurrentPos(0);
 		System.out.println("The current position is " + environment.getCurrentPos());
+
+		// adds to the problem the operators
 		
 		theProblem.createOperators();
+
+		// tries to solve the problem with BFS
 		
 		theProblem.solve(BreadthFSwithLog.getInstance());
 		System.out.println();
+
+		// tries to solve the problem with DFS
+
 		theProblem.solve(DepthFSwithLog.getInstance());
 		
 // This was the test according to the 1/4 homework
