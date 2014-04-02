@@ -1,0 +1,25 @@
+* Start 'BreadthFSwithLog' (15:07:29.861)
+* End   'BreadthFSwithLog' (15:07:29.953)
+* Search lasts:    92ms 
+
+- Solution found!     :)
+- Final state:Environment currentPos 18
+	[WHITE, BLACK, WHITE, WHITE, WHITE, BLACK, WHITE, WHITE, BLACK, WHITE, BLACK, WHITE, WHITE, BLACK, BLACK, WHITE, WHITE, WHITE]
+
+
+* Start 'DepthFSwithLog' (15:07:29.961)
+* End   'DepthFSwithLog' (15:07:29.975)
+* Search lasts:    14ms 
+
+- Solution found!     :)
+- Final state:Environment currentPos 18
+	[WHITE, BLACK, WHITE, WHITE, WHITE, BLACK, WHITE, WHITE, BLACK, WHITE, BLACK, WHITE, WHITE, BLACK, BLACK, WHITE, WHITE, WHITE]
+
+
+* Start 'BestFSwithLog' (15:07:29.977)
+* End   'BestFSwithLog' (15:07:29.985)
+* Search lasts:    8ms 
+
+- Solution found!     :)
+- Final state:Environment currentPos 18
+	[WHITE, BLACK, WHITE, WHITE, WHITE, BLACK, WHITE, WHITE, BLACK, WHITE, BLACK, WHITE, WHITE, BLACK, BLACK, WHITE, WHITE, WHITE]

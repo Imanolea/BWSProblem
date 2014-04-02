@@ -52,9 +52,9 @@ public class BWSProblem extends Problem {
 		moveTwo.setName("Move two");
 		moveFour.setName("Move four");
 		
-		this.addOperator(moveOne);
 		this.addOperator(moveTwo);
 		this.addOperator(moveFour);
+		this.addOperator(moveOne);
 	}
 	
 	/**
