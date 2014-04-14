@@ -17,37 +17,32 @@ public class MainProgram {
 		// Corrected here Homework 3/4 [1.35/1.5]BlWhProblem solve()
 		Environment environment = new Environment(((Environment)theProblem.gatherInitialPercepts()).getLine(),0);
 		
-		if (theProblem.isFullyObserved())
-			System.out.println("Sí.");
-		else
-			System.out.println("No.");
+		//instantiate environment reader
+		System.out.println(theProblem.gatherInitialPercepts());
+
+		// adds to the problem the operators
 		
-//		//instantiate environment reader
-//		System.out.println(theProblem.gatherInitialPercepts());
-//
-//		// adds to the problem the operators
-//		
-//		theProblem.createOperators();
-//
-//		// tries to solve the problem with BFS
-//		
-//		theProblem.solve(BreadthFSwithLog.getInstance());
-//		System.out.println();
-//
-//		// tries to solve the problem with DFS
-//
-//		theProblem.solve(DepthFSwithLog.getInstance());
-//		System.out.println();
-//		
-//		// tries to solve the problem with BestFS
-//		
-//		theProblem.solve(new BestFSwithLog(new BWSPEvaluationFunction()));
-//		System.out.println();
-//		
-//		// tries to solve the problem with AStar
-//		
-//		theProblem.solve(new AStarwithLog(new BWSPEvaluationFunction()));
-//		System.out.println();
+		theProblem.createOperators();
+
+		// tries to solve the problem with BFS
+		
+		theProblem.solve(BreadthFSwithLog.getInstance());
+		System.out.println();
+
+		// tries to solve the problem with DFS
+
+		theProblem.solve(DepthFSwithLog.getInstance());
+		System.out.println();
+		
+		// tries to solve the problem with BestFS
+		
+		theProblem.solve(new BestFSwithLog(new BWSPEvaluationFunction()));
+		System.out.println();
+		
+		// tries to solve the problem with AStar
+		
+		theProblem.solve(new AStarwithLog(new BWSPEvaluationFunction()));
+		System.out.println();
 		
 		
 	}

@@ -102,6 +102,7 @@ public class BWSProblem extends Problem {
 	
 	public boolean isFullyObserved() {
 		Field dataField;
+		
 		int memoryLength = 0;
 		ArrayList <Square> initialSq = (ArrayList<Square>) ((Environment) this.gatherInitialPercepts()).getLine();
 		try {
