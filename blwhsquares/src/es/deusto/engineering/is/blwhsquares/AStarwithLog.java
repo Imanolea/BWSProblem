@@ -2,7 +2,6 @@ package es.deusto.engineering.is.blwhsquares;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.LinkedList;
 import java.util.List;
 
 import es.deusto.ingenieria.is.search.algorithms.Node;
@@ -26,8 +25,6 @@ public class AStarwithLog extends HeuristicSearchMethod {
 	/**
 	 * Carries out a search process from the initial state
 	 * to the final state of the given problem.
-	 * This method is defined according to the second version of the basic search algorithm
-	 * which checks for repeated states (refer to the last algorithm studied in chapter 3).
 	 * 
 	 * @param problem
 	 *            Problem to be solved by a search method.

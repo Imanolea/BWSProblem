@@ -124,7 +124,12 @@ public class BWSProblem extends Problem {
 	
 	public State gatherPercepts(State state) {
 		State returnState = (State) ((Environment)state).clone();
-		((Environment) returnState).addSquare(((Environment) new EnvironmentReader("percepts/blackwhitesquares1.xml").getState()).getLine().get(((Environment) returnState).getCurrentPos()));
+		int currentPos = ((Environment) returnState).getCurrentPos();
+		
+		for (int i = ((Environment) returnState).getLine().size(); i <= ((Environment) returnState).getCurrentPos(); i++)
+			((Environment) returnState).addSquare(Square.UNKNOWN);
+		
+		((Environment) returnState).getLine().set(currentPos, ((Environment) new EnvironmentReader("percepts/blackwhitesquares1.xml").getState()).getLine().get(currentPos));
 		return returnState;
 	}
 

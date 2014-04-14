@@ -2,7 +2,6 @@ package es.deusto.engineering.is.blwhsquares;
 
 import es.deusto.ingenieria.is.search.algorithms.blind.BreadthFSwithLog;
 import es.deusto.ingenieria.is.search.algorithms.blind.DepthFSwithLog;
-import es.deusto.ingenieria.is.search.algorithms.heuristic.BestFS;
 import es.deusto.ingenieria.is.search.algorithms.heuristic.BestFSwithLog;
 
 public class MainProgram {

@@ -11,9 +11,9 @@ public class Environment extends State implements Cloneable {
 
 	public enum Square {
 		WHITE,
-		BLACK;
+		BLACK,
+		UNKNOWN;
 	}
-	
 
 	private List<Square> line;
 	private int currentPos;
