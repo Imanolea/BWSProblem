@@ -165,7 +165,7 @@ public class OnLineHCwithLog extends HeuristicSearchMethod{
 						successorNode.setG(this.getEvaluationFunction().calculateG(successorNode));
 						
 						//compares to find the node with the lowest h value
-						if (successorNode.getH() <= bestNode.getH())
+						if (successorNode.getH() < bestNode.getH())
 							bestNode = successorNode;
 						
 						//Insert current successor State to the list of generated states

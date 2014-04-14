@@ -63,6 +63,7 @@ public class BWSProblem extends Problem {
 		
 		this.addOperator(moveTwo);
 		this.addOperator(moveFour);
+		this.addOperator(moveOne);
 	}
 	
 	/**
@@ -166,7 +167,7 @@ public class BWSProblem extends Problem {
 		} while (!answered);
 
 		if (currentPos < getProblemLength(returnState))
-			((Environment) returnState).getLine().set(currentPos, Square.WHITE);
+			((Environment) returnState).getLine().set(currentPos, sq);
 		
 		return returnState;
 	}
