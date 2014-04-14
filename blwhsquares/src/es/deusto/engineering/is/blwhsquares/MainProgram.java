@@ -25,7 +25,7 @@ public class MainProgram {
 
 		// tries to solve the problem with BFS
 		
-		theProblem.solve(BreadthFSwithLog.getInstance());
+		/*theProblem.solve(BreadthFSwithLog.getInstance());
 		System.out.println();
 
 		// tries to solve the problem with DFS
@@ -41,7 +41,9 @@ public class MainProgram {
 		// tries to solve the problem with AStar
 		
 		theProblem.solve(new AStarwithLog(new BWSPEvaluationFunction()));
-		System.out.println();
+		System.out.println();*/
+		
+		theProblem.solve(new OnLineHCwithLog(new BWSPEvaluationFunction()));
 		
 		
 	}

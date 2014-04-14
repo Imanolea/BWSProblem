@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
+import java.util.Scanner;
 
 import es.deusto.engineering.is.blwhsquares.Environment.Square;
 import es.deusto.ingenieria.is.search.algorithms.Node;
@@ -39,6 +40,11 @@ public class BWSProblem extends Problem {
 		//EnvironmentReader reader = new EnvironmentReader("percepts/blackwhitesquares1.xml");
 		EnvironmentReader reader = new EnvironmentReader("percepts/blackwhitesquaresPartialpercepts1.xml");
 		State initialSt = reader.getState();
+		
+		if (!this.isFullyObserved(reader.getState()))
+			for (int i = ((Environment) reader.getState()).getLine().size(); i < getProblemLength(reader.getState()); i++)
+				((Environment) reader.getState()).getLine().add(Square.UNKNOWN);
+		
 		return initialSt;
 		
 	}
@@ -57,7 +63,6 @@ public class BWSProblem extends Problem {
 		
 		this.addOperator(moveTwo);
 		this.addOperator(moveFour);
-		this.addOperator(moveOne);
 	}
 	
 	/**
@@ -100,11 +105,11 @@ public class BWSProblem extends Problem {
 		}
 	}
 	
-	public boolean isFullyObserved(State state) {
+	public int getProblemLength(State state) {
 		Field dataField;
-		
 		int memoryLength = 0;
 		ArrayList <Square> initialSq = (ArrayList<Square>) ((Environment) state).getLine();
+		
 		try {
 			dataField = ArrayList.class.getDeclaredField("elementData");
 			dataField.setAccessible(true);
@@ -118,18 +123,51 @@ public class BWSProblem extends Problem {
 		} catch (IllegalAccessException e) {
 			e.printStackTrace();
 		}
+		return memoryLength;
+	}
+	
+	public boolean isFullyObserved(State state) {
 		
-		return initialSq.size() == memoryLength;
+		boolean observable = true;
+		
+		for (int i = 0; i < ((Environment) state).getLine().size(); i++)
+			if (((Environment) state).getLine().get(i).name().equals("UNKNOWN"))
+				observable = false;
+		
+		if (((Environment) state).getLine().size() < getProblemLength(state))
+			observable = false;
+		
+		return observable;
 	}
 	
 	public State gatherPercepts(State state) {
 		State returnState = (State) ((Environment)state).clone();
 		int currentPos = ((Environment) returnState).getCurrentPos();
 		
-		for (int i = ((Environment) returnState).getLine().size(); i <= ((Environment) returnState).getCurrentPos(); i++)
-			((Environment) returnState).addSquare(Square.UNKNOWN);
+		boolean answered = false;
+		Square sq = null;
+		Scanner s = new Scanner(System.in);
 		
-		((Environment) returnState).getLine().set(currentPos, ((Environment) new EnvironmentReader("percepts/blackwhitesquares1.xml").getState()).getLine().get(currentPos));
+		do {
+			System.out.print("Color of the actual Square? (b/w): ");
+			
+			String choice = s.nextLine();
+
+			switch(choice) {
+			case "w": case "W":
+				sq = Square.WHITE;
+				answered = true;
+				break;
+			case "b": case "B":
+				sq = Square.BLACK;
+				answered = true;
+				break;
+			}
+		} while (!answered);
+
+		if (currentPos < getProblemLength(returnState))
+			((Environment) returnState).getLine().set(currentPos, Square.WHITE);
+		
 		return returnState;
 	}
 
