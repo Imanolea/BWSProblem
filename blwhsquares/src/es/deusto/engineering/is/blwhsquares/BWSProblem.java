@@ -1,11 +1,13 @@
 package es.deusto.engineering.is.blwhsquares;
 
+import java.lang.reflect.Field;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
 
+import es.deusto.engineering.is.blwhsquares.Environment.Square;
 import es.deusto.ingenieria.is.search.algorithms.Node;
 import es.deusto.ingenieria.is.search.algorithms.SearchMethod;
 import es.deusto.ingenieria.is.search.formulation.Operator;
@@ -34,7 +36,8 @@ public class BWSProblem extends Problem {
 	 * @return the initial state
 	 */
 	public State gatherInitialPercepts() {
-		EnvironmentReader reader = new EnvironmentReader("percepts/blackwhitesquares1.xml");
+		//EnvironmentReader reader = new EnvironmentReader("percepts/blackwhitesquares1.xml");
+		EnvironmentReader reader = new EnvironmentReader("percepts/blackwhitesquaresPartialpercepts1.xml");
 		State initialSt = reader.getState();
 		return initialSt;
 		
@@ -95,6 +98,27 @@ public class BWSProblem extends Problem {
 		} else {
 			System.out.println("\n- Unable to find the solution!     :(");
 		}
+	}
+	
+	public boolean isFullyObserved() {
+		Field dataField;
+		int memoryLength = 0;
+		ArrayList <Square> initialSq = (ArrayList<Square>) ((Environment) this.gatherInitialPercepts()).getLine();
+		try {
+			dataField = ArrayList.class.getDeclaredField("elementData");
+			dataField.setAccessible(true);
+			memoryLength = ((Object[]) dataField.get(initialSq)).length;
+		} catch (NoSuchFieldException e) {
+			e.printStackTrace();
+		} catch (SecurityException e) {
+			e.printStackTrace();
+		} catch (IllegalArgumentException e) {
+			e.printStackTrace();
+		} catch (IllegalAccessException e) {
+			e.printStackTrace();
+		}
+		
+		return initialSq.size() == memoryLength;
 	}
 
 }
