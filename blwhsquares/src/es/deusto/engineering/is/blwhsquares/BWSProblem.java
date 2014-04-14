@@ -100,11 +100,11 @@ public class BWSProblem extends Problem {
 		}
 	}
 	
-	public boolean isFullyObserved() {
+	public boolean isFullyObserved(State state) {
 		Field dataField;
 		
 		int memoryLength = 0;
-		ArrayList <Square> initialSq = (ArrayList<Square>) ((Environment) this.gatherInitialPercepts()).getLine();
+		ArrayList <Square> initialSq = (ArrayList<Square>) ((Environment) state).getLine();
 		try {
 			dataField = ArrayList.class.getDeclaredField("elementData");
 			dataField.setAccessible(true);
@@ -120,6 +120,12 @@ public class BWSProblem extends Problem {
 		}
 		
 		return initialSq.size() == memoryLength;
+	}
+	
+	public State gatherPercepts(State state) {
+		State returnState = (State) ((Environment)state).clone();
+		((Environment) returnState).addSquare(((Environment) new EnvironmentReader("percepts/blackwhitesquares1.xml").getState()).getLine().get(((Environment) returnState).getCurrentPos()));
+		return returnState;
 	}
 
 }
